@@ -5,6 +5,8 @@ from brownie import (
     LinkToken,
     MockV3Aggregator,
     MockOracle,
+    MockDAI,  # new
+    MockWETH,  # new
     VRFCoordinatorV2Mock,
     Contract,
     web3,
@@ -24,10 +26,10 @@ BLOCK_CONFIRMATIONS_FOR_VERIFICATION = (
 )
 
 contract_to_mock = {
-    "link_token": LinkToken,
     "eth_usd_price_feed": MockV3Aggregator,
-    "vrf_coordinator": VRFCoordinatorV2Mock,
-    "oracle": MockOracle,
+    "dai_usd_price_feed": MockV3Aggregator,
+    "fau_token": MockDAI,
+    "weth_tken": MockWETH,
 }
 
 DECIMALS = 18
@@ -116,6 +118,16 @@ def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
         decimals, initial_value, {"from": account}
     )
     print(f"Deployed to {mock_price_feed.address}")
+
+    print("Deploying MockDAI...")
+    dai_token = MockDAI.deploy({"from": account})
+    print(f"Deployed to {dai_token.address}")
+
+    print("Deploying MockWETH...")
+    weth_token = MockWETH.deploy({"from": account})
+    print(f"Deployed to {weth_token.address}")
+
+    """
     print("Deploying Mock VRFCoordinator...")
     mock_vrf_coordinator = VRFCoordinatorV2Mock.deploy(
         BASE_FEE, GAS_PRICE_LINK, {"from": account}
@@ -126,6 +138,7 @@ def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
     mock_oracle = MockOracle.deploy(link_token.address, {"from": account})
     print(f"Deployed to {mock_oracle.address}")
     print("Mocks Deployed!")
+    """
 
 
 def listen_for_event(brownie_contract, event, timeout=200, poll_interval=2):

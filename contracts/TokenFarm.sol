@@ -24,7 +24,7 @@ contract TokenFarm is Ownable {
     mapping(address => mapping(address => uint256)) public stakingBalance;
     // mapping staker address -> unique tokens staked (uint)
     mapping(address => uint256) public uniqueTokensStaked;
-    // map token address ->  price feed contract
+    // mapping token address ->  price feed contract
     mapping(address => address) public tokenPriceFeedMapping;
 
     constructor(address _dappTokenAddress) public {
