@@ -1,3 +1,5 @@
+# if deploying freezes: https://stackoverflow.com/questions/69818605/brownie-doesnt-automatically-attach-to-local-ganache-when-i-have-ganache-open-i
+
 from brownie import DappToken, TokenFarm, config, network
 from web3 import Web3
 
@@ -24,8 +26,8 @@ def deploy_token_farm_and_dapp_token():
 
     # create function "add_allowed_tokens" that maps the price feeds
     # deploy own fake weth token
-    weth_token = get_contract("weth_token")
     fau_token = get_contract("fau_token")
+    weth_token = get_contract("weth_token")
 
     # contracts of the price feeds
     dict_of_allowed_tokens = {

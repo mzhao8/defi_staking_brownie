@@ -9,17 +9,6 @@ compiler:
 networks:
   development:
     verify: False
-  default: mainnet-fork
-  mainnet-fork:
-    lending_pool_addresses_provider: "0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5"
-    weth_token: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-    # For mainnet, the link token is the same
-    link_token: "0x514910771af9ca656af840dff83e8264ecf986ca"
-    aave_link_token: "0x514910771af9ca656af840dff83e8264ecf986ca"
-    aave_dai_token: "0x6b175474e89094c44da98b954eedeac495271d0f"
-    dai_token: "0x6b175474e89094c44da98b954eedeac495271d0f"
-    link_eth_price_feed: "0xDC530D9457755926550b59e8ECcdaE7624181557"
-    dai_eth_price_feed: "0x773616E4d11A78F511299002da57A0a94577F1f4"
   kovan:
     verify: True
     vrf_coordinator: "0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9"
@@ -45,3 +34,8 @@ networks:
     fau_token: "0xFab46E002BbF0b4509813474841E0716E6730136"
   ganache:
     verify: False
+dotenv: .env
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
